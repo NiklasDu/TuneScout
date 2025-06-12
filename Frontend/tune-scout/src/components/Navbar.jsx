@@ -207,7 +207,7 @@ function Navbar() {
                 className="block py-2 px-3 text-white bg-cyan-700 rounded-sm md:bg-transparent md:text-cyan-700 md:p-0 md:dark:text-cyan-500"
                 aria-current="page"
               >
-                ScoutIt
+                Scout It
               </Link>
             </li>
             <li>
@@ -215,7 +215,7 @@ function Navbar() {
                 to="/similar-sounds"
                 className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 dark:text-white md:dark:hover:text-cyan-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                SimilarSounds
+                Similar Sounds
               </Link>
             </li>
             <li>
@@ -223,7 +223,7 @@ function Navbar() {
                 to="/countries-top-hits"
                 className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 dark:text-white md:dark:hover:text-cyan-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
-                CountriesTopHits
+                Countries Top Hits
               </Link>
             </li>
             <li>

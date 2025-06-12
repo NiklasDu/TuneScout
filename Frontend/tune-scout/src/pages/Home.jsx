@@ -1,9 +1,10 @@
 import React from "react";
+import ScoutIt from "../components/ScoutIt";
 
 function Home() {
   return (
     <>
-      <h1>Startseite</h1>
+      <ScoutIt />
     </>
   );
 }
