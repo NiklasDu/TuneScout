@@ -1,7 +1,14 @@
 import "./App.css";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return <h1 className="text-3xl text-red-600">Test</h1>;
+  return (
+    <>
+      <Navbar />
+      <Home />
+    </>
+  );
 }
 
 export default App;
