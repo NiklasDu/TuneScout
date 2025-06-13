@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function ScoutIt() {
+function CountriesTopHits() {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
@@ -178,4 +178,4 @@ function ScoutIt() {
   );
 }
 
-export default ScoutIt;
+export default CountriesTopHits;

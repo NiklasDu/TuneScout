@@ -240,18 +240,6 @@ function Navbar() {
                 Countries Top Hits
               </Link>
             </li>
-            <li>
-              <Link
-                to="/favorites"
-                className={`block py-2 px-3 text-gray-900 rounded-sm ${
-                  location.pathname === "/favorites"
-                    ? "text-white bg-cyan-700 md:bg-transparent md:text-cyan-700 dark:text-cyan-500"
-                    : "text-gray-900 hover:bg-gray-100 md:hover:text-cyan-700 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-gray-800"
-                }`}
-              >
-                Favorites
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
