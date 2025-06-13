@@ -6,7 +6,6 @@ function ScoutIt() {
   const [topArtists, setTopArtists] = useState([]);
   const [topGenres, setTopGenres] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
-  //   const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
   const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
 
   useEffect(() => {
@@ -94,7 +93,7 @@ function ScoutIt() {
           for each genre you can think of!
         </p>
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto pt-8">
-          <label className="mb-8 pt-8 pb-6 text-lg font-normal text-gray-800 lg:text-xl sm:px-16 xl:px48 dark:text-gray-400">
+          <label className="mb-8 pt-8 pb-6 text-lg font-normal text-gray-800 lg:text-xl sm:px-16 xl:px48 dark:text-gray-200">
             Choose genre:
           </label>
           <select
