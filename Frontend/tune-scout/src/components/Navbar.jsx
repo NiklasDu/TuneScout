@@ -82,7 +82,7 @@ function Navbar() {
                 <use xlink:to="#e" x="2470" />
               </g>
             </svg>
-            English (US)
+            English
           </button>
           {/* <!-- Dropdown --> */}
           <div
@@ -140,7 +140,7 @@ function Navbar() {
                         />
                       </g>
                     </svg>
-                    English (US)
+                    English
                   </div>
                 </Link>
               </li>
