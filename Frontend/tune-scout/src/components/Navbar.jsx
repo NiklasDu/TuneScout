@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Schließe das Dropdown, wenn außerhalb geklickt wird
   useEffect(() => {
@@ -48,14 +50,14 @@ function Navbar() {
               className="w-5 h-5 rounded-full me-3"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 3900 3900"
             >
               <path fill="#b22234" d="M0 0h7410v3900H0z" />
               <path
                 d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0"
                 stroke="#fff"
-                stroke-width="300"
+                strokeWidth="300"
               />
               <path fill="#3c3b6e" d="M0 0h2964v2100H0z" />
               <g fill="#fff">
@@ -115,8 +117,8 @@ function Navbar() {
                       id="flag-icon-css-us"
                       viewBox="0 0 512 512"
                     >
-                      <g fill-rule="evenodd">
-                        <g stroke-width="1pt">
+                      <g fillRule="evenodd">
+                        <g strokeWidth="1pt">
                           <path
                             fill="#bd3d44"
                             d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z"
@@ -187,9 +189,9 @@ function Navbar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -204,7 +206,11 @@ function Navbar() {
             <li>
               <Link
                 to="/"
-                className="block py-2 px-3 text-white bg-cyan-700 rounded-sm md:bg-transparent md:text-cyan-700 md:p-0 md:dark:text-cyan-500"
+                className={`block py-2 px-3 text-gray-900 rounded-sm ${
+                  location.pathname === "/"
+                    ? "text-white bg-cyan-700 md:bg-transparent md:text-cyan-700 dark:text-cyan-500"
+                    : "text-gray-900 hover:bg-gray-100 md:hover:text-cyan-700 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-gray-800"
+                }`}
                 aria-current="page"
               >
                 Scout It
@@ -213,7 +219,11 @@ function Navbar() {
             <li>
               <Link
                 to="/similar-sounds"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 dark:text-white md:dark:hover:text-cyan-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className={`block py-2 px-3 text-gray-900 rounded-sm ${
+                  location.pathname === "/similar-sounds"
+                    ? "text-white bg-cyan-700 md:bg-transparent md:text-cyan-700 dark:text-cyan-500"
+                    : "text-gray-900 hover:bg-gray-100 md:hover:text-cyan-700 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-gray-800"
+                }`}
               >
                 Similar Sounds
               </Link>
@@ -221,7 +231,11 @@ function Navbar() {
             <li>
               <Link
                 to="/countries-top-hits"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 dark:text-white md:dark:hover:text-cyan-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className={`block py-2 px-3 text-gray-900 rounded-sm ${
+                  location.pathname === "/countries-top-hits"
+                    ? "text-white bg-cyan-700 md:bg-transparent md:text-cyan-700 dark:text-cyan-500"
+                    : "text-gray-900 hover:bg-gray-100 md:hover:text-cyan-700 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-gray-800"
+                }`}
               >
                 Countries Top Hits
               </Link>
@@ -229,7 +243,11 @@ function Navbar() {
             <li>
               <Link
                 to="/favorites"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-cyan-700 dark:text-white md:dark:hover:text-cyan-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className={`block py-2 px-3 text-gray-900 rounded-sm ${
+                  location.pathname === "/favorites"
+                    ? "text-white bg-cyan-700 md:bg-transparent md:text-cyan-700 dark:text-cyan-500"
+                    : "text-gray-900 hover:bg-gray-100 md:hover:text-cyan-700 dark:text-white dark:hover:bg-gray-700 md:dark:hover:bg-gray-800"
+                }`}
               >
                 Favorites
               </Link>

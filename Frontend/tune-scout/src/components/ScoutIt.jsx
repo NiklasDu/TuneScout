@@ -114,12 +114,17 @@ function ScoutIt() {
               type="submit"
               className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800"
             >
-              Suche starten
+              Search
             </button>
           </div>
         </form>
       </div>
 
+      {!hasSearched && (
+        <p className="text-center text-gray-500 text-lg py-8 dark:text-gray-400">
+          Choose a genre to see the top tracks and artists of the genre!
+        </p>
+      )}
       <div className="mx-auto max-w-screen-xl px-8 flex gap-8">
         {hasSearched && (
           <>
