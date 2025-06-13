@@ -5,6 +5,7 @@ function ScoutIt() {
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
   const [topGenres, setTopGenres] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
   //   const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
   const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
 
@@ -24,6 +25,8 @@ function ScoutIt() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasSearched(true);
+
     const fetchTopTracks = async () => {
       const res = await fetch(
         `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${selectedGenre}&limit=20&api_key=${apiKey}&format=json`
@@ -44,6 +47,42 @@ function ScoutIt() {
 
     fetchTopArtists();
   };
+
+  function NumberIcon({ number }) {
+    return (
+      <svg
+        width="120"
+        height="120"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-full"
+        style={{ display: "block" }}
+      >
+        <rect
+          x="0"
+          y="0"
+          width="120"
+          height="120"
+          rx="16"
+          fill="#06b6d4"
+          stroke="#0891b2"
+          strokeWidth="4"
+        />
+        <text
+          x="50%"
+          y="58%"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fontSize="4em"
+          fill="#fff"
+          fontWeight="bold"
+        >
+          {number}
+        </text>
+      </svg>
+    );
+  }
 
   return (
     <section className="bg-white dark:bg-gray-900 min-h-[75vh]">
@@ -82,57 +121,49 @@ function ScoutIt() {
       </div>
 
       <div className="mx-auto max-w-screen-xl px-8 flex gap-8">
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold pb-4">Top Tracks: </h1>
-          {topTracks.map((track, index) => (
-            <div
-              key={track.mbid || index}
-              className="w-full flex items-center mb-3 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 min-h-[120px] h-[120px]"
-            >
-              <img
-                className="rounded-l-lg h-full w-[120px] object-cover"
-                src={
-                  track.image?.find((img) => img.size === "medium")?.[
-                    "#text"
-                  ] || "https://picsum.photos/120"
-                }
-                alt={track.name}
-              />
-              <div className="flex flex-col justify-center w-4/5 pl-4 overflow-hidden">
-                <h1 className="mb-2 mt-2 text-2xl font-medium text-gray-800 truncate">
-                  {track.name}
-                </h1>
-                <h2 className="text-lg text-gray-600 truncate">
-                  {track.artist.name}
-                </h2>
-              </div>
+        {hasSearched && (
+          <>
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold pb-4">Top 20 Tracks: </h1>
+              {topTracks.map((track, index) => (
+                <div
+                  key={track.mbid || index}
+                  className="w-full flex items-center mb-3 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 min-h-[120px] h-[120px]"
+                >
+                  <div className="flex items-center justify-center h-full w-[120px]">
+                    <NumberIcon number={index + 1} />
+                  </div>
+                  <div className="flex flex-col justify-center w-4/5 pl-4 overflow-hidden">
+                    <h1 className="mb-2 mt-2 text-2xl font-medium text-gray-800 truncate">
+                      {track.name}
+                    </h1>
+                    <h2 className="text-lg text-gray-600 truncate">
+                      {track.artist.name}
+                    </h2>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold pb-4">Top Artists: </h1>
-          {topArtists.map((artist, index) => (
-            <div
-              key={artist.mbid || index}
-              className="w-full flex items-center mb-3 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 min-h-[120px] h-[120px]"
-            >
-              <img
-                className="rounded-l-lg h-full w-[120px] object-cover"
-                src={
-                  artist.image?.find?.((img) => img.size === "medium")?.[
-                    "#text"
-                  ] || "https://picsum.photos/120"
-                }
-                alt={artist.name}
-              />
-              <div className="flex flex-col justify-center w-4/5 pl-4 overflow-hidden">
-                <h1 className="mb-2 mt-2 text-2xl font-medium text-gray-800 truncate">
-                  {artist.name}
-                </h1>
-              </div>
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold pb-4">Top 20 Artists: </h1>
+              {topArtists.map((artist, index) => (
+                <div
+                  key={artist.mbid || index}
+                  className="w-full flex items-center mb-3 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 min-h-[120px] h-[120px]"
+                >
+                  <div className="flex items-center justify-center h-full w-[120px]">
+                    <NumberIcon number={index + 1} />
+                  </div>
+                  <div className="flex flex-col justify-center w-4/5 pl-4 overflow-hidden">
+                    <h1 className="mb-2 mt-2 text-2xl font-medium text-gray-800 truncate">
+                      {artist.name}
+                    </h1>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
     </section>
   );
